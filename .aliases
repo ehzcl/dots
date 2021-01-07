@@ -1,0 +1,14 @@
+alias yay='yay --aur'
+alias lc="echo 'rar files';ls *.rar; echo '\nzip files' ;ls *.zip; echo '\n7z files'; ls *.7z; echo '\ngz files'; ls *.gz; echo '\ntar files'; ls *.tar*"
+alias ll="ls -d */"
+alias ytmp3="youtube-dl --extract-audio --audio-format mp3 -o '%(title)s.%(ext)s'"
+alias ytwav="youtube-dl --extract-audio --audio-format wav -o '%(title)s.%(ext)s'"
+alias ytmp4="youtube-dl -f mp4 -o '[%(channel)s] %(title)s.%(ext)s'"
+alias logout="pkill -15 -u reigu" #change to user variable
+alias yay="yay --aur"
+alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
+alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
+alias unzip="unzip -q"
+alias love="/home/reigu/git/love/src/love"
+alias lsdir="ls --sort=extension --group-directories-first"
+
