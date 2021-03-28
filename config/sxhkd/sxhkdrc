@@ -1,0 +1,46 @@
+# binds
+super + Return
+	$TERMINAL
+
+super + d
+	dmenu_run
+alt + f
+	$TERMINAL -e vifm
+alt + m
+	strawberry
+alt + y
+	$TERMINAL -e straw-viewer
+alt + h
+	$TERMINAL -e htop
+
+ctrl + alt + k
+        (setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap br || setxkbmap us
+ctrl + alt + t
+	kitty -e tmux
+# Recording
+Print
+	maim "~/pic/screenshot/fullscreen-$(date '+%y%m%d-%H%M-%S').png"
+shift + Print
+	maimpick
+
+# Audio
+XF86AudioMute
+	pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle && pkill -SIGRTMIN+11 $STATUSBAR
+XF86AudioRaiseVolume
+	 pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5% && pkill -SIGRTMIN+11 $STATUSBAR
+XF86AudioLowerVolume
+	 pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5% && pkill -SIGRTMIN+11 $STATUSBAR
+XF86Audio{Next,Prev}
+	mpc {next,prev}
+XF86Audio{Pause,Play,Stop}
+	mpc {pause,play,stop}
+XF86Audio{Rewind,Forward}
+	mpc seek {-,+}10
+
+
+# Power
+XF86PowerOff
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+XF86Sleep
+	prompt 'Hibernate computer?' 'sudo -A zzz'
+

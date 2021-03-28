@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#xrandr --newmode "1366x768_60.00" 84.75 1360 1432 1568 1776 768 771 781 798 -hsync +vsync
+
+#xrandr --newmode "1360x768R" 72.00 1360 1408 1440 1520 768 771 781 790 +hsync -vsync
+
+
+# setup #1
+#PM="HDMI2"
+#SM="DP1"
+
+# setup #2
+PM="DP1"
+SM="HDMI2"
+
+# using only VGA monitor
+#PM="DP-1"
+
+xrandr --output $PM --primary
+# xrandr --addmode	$PM	1360x768R
+
+# xrandr --addmode	$PM	1368x768_60.00
+# xrandr --output		$PM	--mode 1360x768R
+
+
+xrandr --output $SM --mode 1360x768
+xrandr --output		$PM	--mode 1280x720		--primary --left-of $SM
+#xrandr --output		$SM	--mode 1280x720		--right-of 	$PM
+xcompmgr &              # xcompmgr for transparency
+$STATUSBAR &            # start the statusbar
+xset r rate 300 50 &    # Speed xrate up
+unclutter &             # Remove mouse when idle
+
+# setup wallpaper and keybindings
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &  # start the keybindings
+
+# Settings for Japanese input
+export GTK_IM_MODULE='ibus'
+export QT_IM_MODULE='ibus'
+export XMODIFIERS=@im='ibus'
+export QT_QPA_PLATFORMTHEME='qt5ct'
+
+#Toolbar for anthy
+ibus-daemon -drx
